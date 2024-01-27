@@ -5,7 +5,11 @@ import React from "react";
 import Header from "./component/layout/Header/Header.js";
 import Footer from "./component/layout/Footer/Footer.js";
 import Home from "./component/Home/Home.js"
-
+import ProductDetails from "./component/Product/ProductDetails.js";
+import Products from "./component/Product/Products.js"
+import Search from "./component/Product/Search.js"
+import "overlay-navbar/dist/lib/ReactNavbar.min.css";
+import LoginSignup from './component/Users/LoginSignup.js';
 
 function App() {
   React.useEffect(()=>{
@@ -19,7 +23,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Add other routes here if needed */}
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:keyword" element={<Products />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/login" element={<LoginSignup />} />
       </Routes>
       <Footer />
     </Router>

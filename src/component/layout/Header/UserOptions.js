@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import "./Header.css";
 import { ListItem, SpeedDial,SpeedDialAction } from '@mui/material';
 import { Backdrop } from '@mui/material';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from  '@material-ui/icons/ExitToApp';
 import ListAltIcon from  "@material-ui/icons/ListAlt"
@@ -32,7 +32,14 @@ const UserOptions = ({user}) => {
         { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
       ];
     
-      if (user && user.role === "admin") {
+      // if (user && user.role === "admin") {
+      //   options.unshift({
+      //     icon: <DashboardIcon />,
+      //     name: "Dashboard",
+      //     func: dashboard,
+      //   });
+      // }
+      if (user ) {
         options.unshift({
           icon: <DashboardIcon />,
           name: "Dashboard",
@@ -68,7 +75,8 @@ const UserOptions = ({user}) => {
             icon={
               <img
                 className="speedDialIcon"
-                src={user.avatar.url ? user.avatar.url : "/Profile.png"}
+                src={ user.avatar ? user.avatar.url : "/Profile.png"}
+                // src={"/Profile.png"}
                 alt="Profile"
               />
             }

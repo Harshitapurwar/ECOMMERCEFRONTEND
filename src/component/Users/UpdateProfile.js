@@ -7,9 +7,11 @@ import FaceIcon from '@mui/icons-material/Face';
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors,  updateProfile, loadUser} from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
+import { UPDATE_PROFILE_RESET } from "../../constants/userConstant";
 // import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import MetaData from "../layout/MetaData";
+// import { UPDATE_PROFILE_RESET } from "../../constants/userConstant";
 
 const UpdateProfile = () => {
     const dispatch = useDispatch();
@@ -64,13 +66,13 @@ const updateProfileDataChange = (e) => {
       alert.success("Profile Updated Successfully");
       dispatch(loadUser());
 
-      history.push("/account");
+      navigate("/account");
 
       dispatch({
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, alert, history, user, isUpdated]);
+  }, [dispatch, error, alert, navigate, user, isUpdated]);
   return (
     <Fragment>
       {loading ? (

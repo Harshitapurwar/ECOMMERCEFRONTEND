@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import WebFont from "webfontloader";
 import React from "react";
 import Header from "./component/layout/Header/Header.js";
@@ -17,36 +17,64 @@ import { useSelector } from 'react-redux';
 import Profile from "./component/Users/Profile.js";
 import ProtectedRoute from './component/Route/ProtectedRoute.js';
 import UpdateProfile from "./component/Users/UpdateProfile.js"
-
+import UpdatePassword from "./component/Users/UpdatePassword.js";
 function App() {
 
-  const {isAuthenticated,user}=useSelector(state=>state.user)
-
-  React.useEffect(()=>{
+  const { isAuthenticated, user } = useSelector(state => state.user)
+  // console.log(user);
+  // console.log(isAuthenticated);
+  React.useEffect(() => {
     WebFont.load({
-      google: {"families": ["Roboto", "Droid Sans" ,"Chilanka"],},
+      google: { "families": ["Roboto", "Droid Sans", "Chilanka"], },
     });
-    
+
     store.dispatch(loadUser());
-  },[]);
+  }, []);
   return (
-    <Router>
+    <>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
-        
+
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
-        <ProtectedRoute path="/account" element={<Profile />} />
-        <ProtectedRoute path="/me/update" element={<UpdateProfile />} />
         <Route path="/login" element={<LoginSignup />} />
+        {/* <Route path="/account" element={<Profile />} /> */}
+        {/* <Route><ProtectedRoute path="/account" element={<ProtectedRoute>} /></Route> */}
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/me/update"
+          element={
+            <ProtectedRoute>
+              <UpdateProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/password/update"
+          element={
+            <ProtectedRoute>
+              <UpdatePassword />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
+
 }
 
 export default App;
+

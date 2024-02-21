@@ -11,12 +11,17 @@ import { clearErrors, login ,register} from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// import { useDispatch} from "react-redux";
 
-
-const LoginSignUp = ({ history }) => {
+const LoginSignUp = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate=useNavigate();
+  
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -36,6 +41,7 @@ const LoginSignUp = ({ history }) => {
   });
 
   const { name, email, password } = user;
+  // console.log("name");
 
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -44,39 +50,62 @@ const LoginSignUp = ({ history }) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
   };
-
-  const registerSubmit = (e) => {
+  console.log("file");
+  const [formData, setFormData] = useState({
+    name:"",
+    email:"",
+    password:"",
+    avatar: null,
+  });
+  const registerSubmit = async(e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
-
-    myForm.set("name", name);
-    myForm.set("email", email);
-    myForm.set("password", password);
-    myForm.set("avatar", avatar);
-    dispatch(register(myForm));
+    // setFormData({
+    //   name:name,
+    //   email:email,
+    //   password:password,
+    //   avatar:avatar,
+    // })
+    console.log(formData);
+    dispatch(register(formData));
   };
+  console.log("myform1");
 
+  // const registerDataChange = (e) => {
+  //   if (e.target.name === "avatar") {
+  //     const reader = new FileReader();
+
+  //     reader.onload = () => {
+  //       if (reader.readyState === 2) {
+  //         setAvatarPreview(reader.result);
+  //         setAvatar(reader.result);
+  //       }
+  //     };
+
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   } else {
+  //     setUser({ ...user, [e.target.name]: e.target.value });
+  //   }
+  // };
   const registerDataChange = (e) => {
-    if (e.target.name === "avatar") {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
+    console.log(e.target.name);
+    if (e.target.name === 'avatar') {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.files[0],
+      });
     } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
     }
   };
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
+  // console.log("new1");
 
-//   const redirect = location.search ? location.search.split("=")[1] : "/account";
-const location = useLocation();
-const redirect = location.search ? new URLSearchParams(location.search).get("redirect") : "/account";
+// const redirect = location.search ? new URLSearchParams(location.search).get("redirect") : "/account";
+// const redirect = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
     if (error) {
@@ -87,8 +116,10 @@ const redirect = location.search ? new URLSearchParams(location.search).get("red
     if (isAuthenticated) {
       navigate(redirect);
     }
-  }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
-
+  }, [dispatch, error, alert, navigate
+    , isAuthenticated, redirect
+  ]);
+  // console.log("new2");
   const switchTabs = (e, tab) => {
     if (tab === "login") {
       switcherTab.current.classList.add("shiftToNeutral");
@@ -127,6 +158,7 @@ const redirect = location.search ? new URLSearchParams(location.search).get("red
                   <input
                     type="email"
                     placeholder="Email"
+                    name="email"
                     required
                     value={loginEmail}
                     onChange={(e) => setLoginEmail(e.target.value)}
@@ -137,6 +169,7 @@ const redirect = location.search ? new URLSearchParams(location.search).get("red
                   <input
                     type="password"
                     placeholder="Password"
+                    name="password"
                     required
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
@@ -158,7 +191,7 @@ const redirect = location.search ? new URLSearchParams(location.search).get("red
                     placeholder="Name"
                     required
                     name="name"
-                    value={name}
+                    value={formData.name}
                     onChange={registerDataChange}
                   />
                 </div>
@@ -169,7 +202,7 @@ const redirect = location.search ? new URLSearchParams(location.search).get("red
                     placeholder="Email"
                     required
                     name="email"
-                    value={email}
+                    value={formData.email}
                     onChange={registerDataChange}
                   />
                 </div>
@@ -180,7 +213,7 @@ const redirect = location.search ? new URLSearchParams(location.search).get("red
                     placeholder="Password"
                     required
                     name="password"
-                    value={password}
+                    value={formData.password}
                     onChange={registerDataChange}
                   />
                 </div>

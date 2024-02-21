@@ -15,10 +15,13 @@ const options={
 };
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Router >
   <Provider store={store}>
+    
     <AlertProvider template={AlertTemplate}{...options}>
      
     <App />
     </AlertProvider>
   </Provider>,
+  </Router>
 );

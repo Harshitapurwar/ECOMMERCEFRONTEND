@@ -55,8 +55,12 @@ const UserOptions = ({user}) => {
         navigate("/orders");
     }
     function account(){
-        navigate("/account");
+        // navigate("/account");
+        navigate("/me/update")
     }
+    // function UpdateProfile(){
+    //   navigate("/me/update")
+    // }
     function logoutUser(){
         dispatch(logout());
         alert.success("Logout successfully");

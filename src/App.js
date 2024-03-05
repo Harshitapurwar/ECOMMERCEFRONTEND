@@ -18,6 +18,7 @@ import Profile from "./component/Users/Profile.js";
 import ProtectedRoute from './component/Route/ProtectedRoute.js';
 import UpdateProfile from "./component/Users/UpdateProfile.js"
 import UpdatePassword from "./component/Users/UpdatePassword.js";
+import Cart from "./component/Cart/Cart";
 function App() {
 
   const { isAuthenticated, user } = useSelector(state => state.user)
@@ -36,15 +37,16 @@ function App() {
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
 
-        <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:keyword" element={<Products />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/login" element={<LoginSignup />} />
+        <Route exact path="/" element={<Home />} />
+        <Route  exact path="/product/:id" element={<ProductDetails />} />
+        <Route exact path="/products" element={<Products />} />
+        <Route exact path="/products/:keyword" element={<Products />} />
+        <Route exact path="/search" element={<Search />} />
+        <Route exact path="/login" element={<LoginSignup />} />
+        <Route exact path="/cart" element={<Cart />} />
         {/* <Route path="/account" element={<Profile />} /> */}
         {/* <Route><ProtectedRoute path="/account" element={<ProtectedRoute>} /></Route> */}
-        <Route
+        {/* <Route
           path="/account"
           element={
             <ProtectedRoute>
@@ -67,7 +69,22 @@ function App() {
               <UpdatePassword />
             </ProtectedRoute>
           }
-        />
+        /> */}
+         {/* <ProtectedRoute exact path="/account" component={Profile} />
+
+<ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+
+<ProtectedRoute
+  exact
+  path="/password/update"
+  component={UpdatePassword}
+/> */}
+<Route element={<ProtectedRoute />}>
+        <Route path="/account" element={<Profile />} />
+        <Route exact path="/me/update" element={<UpdateProfile />} />
+        <Route exact path="/password/update" element={<UpdatePassword />} />
+        {/* Handle other routes */}
+      </Route>
 
       </Routes>
       <Footer />

@@ -14,6 +14,7 @@ import MetaData from "../layout/MetaData";
 // import { UPDATE_PROFILE_RESET } from "../../constants/userConstant";
 
 const UpdateProfile = () => {
+  console.log("updateProfilePage");
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate=useNavigate();

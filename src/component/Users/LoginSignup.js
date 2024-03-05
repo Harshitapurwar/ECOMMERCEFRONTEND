@@ -106,8 +106,10 @@ const LoginSignUp = () => {
 
 // const redirect = location.search ? new URLSearchParams(location.search).get("redirect") : "/account";
 // const redirect = searchParams.get("redirect") || "/account";
-
+  // console.log(dispatch, error, alert, navigate, isAuthenticated, redirect);
   useEffect(() => {
+    console.log("inside useEffect")
+    console.log(location.pathname);
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -119,6 +121,17 @@ const LoginSignUp = () => {
   }, [dispatch, error, alert, navigate
     , isAuthenticated, redirect
   ]);
+  // useEffect(() => {
+  //   if (error) {
+  //     alert.error(error);
+  //     dispatch(clearErrors());
+  //   }
+    
+  //   if (isAuthenticated) {
+  //     navigate(redirect);
+  //   }
+  // },[]
+  // );
   // console.log("new2");
   const switchTabs = (e, tab) => {
     if (tab === "login") {

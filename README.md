@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# E-COMMERCE
+Full-Stack Website for E-Commerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🖥 Tech Stack
+*Frontend:*
 
-## Available Scripts
+[![HTML](https://img.shields.io/badge/HTML-5-orange?style=flat-square)](https://www.w3.org/TR/html52/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS](https://img.shields.io/badge/CSS-3-blue?style=flat-square)](https://www.w3.org/Style/CSS/)
 
-In the project directory, you can run:
+*Backend:*
 
-### `npm start`
+![nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)&nbsp;
+![expressjs](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)&nbsp;
+![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;
+<a href="https://www.postman.com/">
+    <img src="https://img.shields.io/badge/Postman-API%20Development-ff6c37?style=flat-square&logo=postman" alt="Postman" width="250"/>
+</a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📮 Postman 
+<a href="https://www.postman.com/bold-robot-329243/workspace/my-workspace/collection/30142068-7f6b7605-2f36-434c-aeac-90da79d91050?action=share&creator=30142068">Go to Postman Collection</a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Features
+- Login/Signup User Account
+- Login using Email/Username
+- Search Products on the basis of filter
+- Cart Option
+- Shipping Option
+- Display Products
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Sneak Peek of Website 🙈 :
+![home]("https://github.com/Harshitapurwar/ECOMMERCEFRONTEND/blob/master/public/ecom_cover.jpg")
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Before running the application, make sure you have the following installed:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Node.js
+- MongoDB or MongoDB Atlas account
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repository
 
-## Learn More
+```bash
+git clone https://github.com/Harshitapurwar/ECOMMERCEFRONTEND
+```
+```bash
+git clone https://github.com/Harshitapurwar/ECOMMERCE
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Go to the project directory and install dependencies for server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd frontend for Frontend
+cd backend for Backend
+npm install
+```
 
-### Code Splitting
+3. Start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm start for frontend
+npm run dev for backend
+```
 
-### Analyzing the Bundle Size
+<h2>📬 Contact</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+If you want to contact me, you can reach me through below handles.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Harshita**
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harshita-purwar-832790262/)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+@E-Commerce
